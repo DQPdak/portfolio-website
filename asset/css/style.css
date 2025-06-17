@@ -1,0 +1,1106 @@
+/* phần chung */
+/* cài đặt các thuộc tính chung của trang web */
+* {
+  box-sizing: border-box;
+}
+
+/* cài lại font chữ chung */
+html {
+  font-size: 62.5%;
+}
+
+/* quy định các thuộc tính cho thẻ body */
+body {
+  height: 1000000px;
+  margin: 0;
+  font-size: 1.6rem;
+  font-family: "Courier New", monospace;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* quy ước kích thước svg */
+svg {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+/* background vũ trụ đầy sao */
+canvas#bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed; /*Cố định tại góc trên*/
+  z-index: 999; /*Luôn hiển thị đè lên các phần tử khác*/
+  top: 0;
+  width: 100%;
+  background: rgba(
+    10,
+    10,
+    25,
+    0.1
+  ); /* nền đậm trong suốt tạo hiệu ứng tấm kính */
+  backdrop-filter: blur(0.5rem);
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* quy định các thuộc tính cho thẻ ul  */
+.navbar ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: clamp(2rem, 3vw, 6rem);
+  padding: 0 2rem;
+}
+
+/* thiết lập css cho thẻ a */
+.navbar a {
+  color: #ffffff;
+  font-size: 1.4rem;
+  text-transform: uppercase; /*các thẻ a sẽ viết toàn in hoa*/
+  text-decoration: none;
+  letter-spacing: 1px;
+  font-weight: 600;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* tạo đường gạch chân */
+.navbar a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 2px;
+  background: #00f0ff;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* đường gạch chân sẽ được kéo từ trái qua phải khi hover vào */
+.navbar a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* đổi màu thẻ a khi hover vào */
+.navbar a:hover {
+  color: #00f0ff;
+  text-shadow: 0 0 10px #00f0ff;
+}
+
+/* Banner */
+.banner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6rem 4rem;
+  min-height: 100vh;
+}
+
+/* phần nội dung */
+.banner-left {
+  flex: 1;
+  line-height: 1;
+  text-shadow: 0 0 15px #00c9a7, 0 0 30px #00c9a7aa, 0 0 50px #00c9a799;
+  font-weight: bold;
+  color: #fff;
+}
+
+.banner-left h1 {
+  text-align: center;
+  line-height: 1;
+  font-size: 6rem;
+  animation: pulseGlow 2.3s ease-in-out infinite; /*hiệu ứng nhiệp đập chữ sẽ phóng to thu nhỏ và đổi text-shadow*/
+  margin: 0;
+  letter-spacing: -5px;
+}
+
+/* làm nổi bật tên  */
+.hightlight {
+  display: inline-block;
+  font-weight: 900;
+  font-size: inherit;
+  color: #00f0ff;
+  animation: pulsehiglightrGlow 2.3s ease-in-out infinite; /*hiệu ứng đổi màu theo nhịp đập*/
+  transform-origin: center;
+}
+
+/* phần hình ảnh */
+.banner-right {
+  flex: 1;
+  text-align: center;
+}
+
+/* hình ảnh phi thuyền */
+.banner-right img {
+  max-width: 300px;
+  animation: flyUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate; /*Hiệu ứng bay lên của phi thuyền*/
+  transform-origin: center;
+}
+
+/* không khí bị đẩy xuống khi phi thuyền bay */
+.wind-trail {
+  position: absolute;
+  bottom: 0;
+  left: 74%;
+  transform: translateX(-50%);
+  width: 4rem;
+  height: 160px;
+  background: linear-gradient(to top, #cfcfcf, transparent);
+  opacity: 0.8;
+  filter: blur(1rem);
+  animation: windTrailAnim 0.5s infinite; /*hiệu ứng gió khi chịu phản lực*/
+  z-index: 0;
+}
+
+/* thông tin cá nhân */
+.profile-section {
+  padding: 8rem 2rem;
+  position: relative;
+  z-index: 1;
+  min-height: 50vh;
+}
+
+.info-box {
+  margin-left: 30rem;
+  display: inline-block;
+  max-width: 50rem;
+  color: white;
+  font-size: 1.8rem;
+  line-height: 3.8rem;
+  background: rgba(71, 131, 215, 0.16);
+  padding: 2rem 3rem;
+  box-shadow: 0 0 10px #00ffff66, 0 0 20px #00ffff33;
+  border: 1px solid #00ffff99;
+  border-radius: 1.5rem;
+  position: absolute;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease, transform 1s ease;
+  animation: borderPulse 3s infinite ease-in-out;
+}
+
+/* Khi lộ ra màn hình */
+.info-box.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 1s ease;
+}
+
+/* title info box */
+.info-box .box__title {
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #fff;
+  font-weight: 700;
+  font-size: 2rem;
+  color: #00ffff;
+  text-shadow: 0 0 5px #00ffffaa, 0 0 10px #00ffff77;
+  text-align: center;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #fff;
+}
+
+.info-box img {
+  width: 24rem;
+  height: 24rem;
+  border-radius: 50%;
+  margin: 0 auto;
+  object-fit: cover;
+  border: 4px solid #00ffff;
+  box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff88;
+}
+
+strong {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #00ffff;
+  font-weight: 700;
+  text-shadow: 0 0 6px #00ffff;
+}
+
+/* lovely */
+/* thông tin cá nhân */
+.lovely-section {
+  padding: 8rem 2rem;
+  position: relative;
+  z-index: 1;
+  min-height: 50vh;
+}
+
+.lovely-box {
+  right: 25%;
+  margin-left: 30rem;
+  display: inline-block;
+  max-width: 50rem;
+  color: white;
+  font-size: 1.8rem;
+  line-height: 2.8rem;
+  background: rgba(85, 215, 71, 0.16); /* nền xanh lá mờ */
+  padding: 2rem 3rem;
+  box-shadow: 0 0 10px #00ff7766, 0 0 20px #00ff7733;
+  border: 1px solid #00ff7799;
+  border-radius: 1.5rem;
+  position: absolute;
+  margin-top: 6rem;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease, transform 1s ease;
+  animation: borderPulseGreen 3s infinite ease-in-out;
+}
+
+/* kích thước icon */
+.lovely-box svg {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+/* quy định các thuộc tính cho class lovely-items */
+.lovely__items {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* title lovely box */
+.lovely-box .box__title {
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #fff;
+  font-weight: 700;
+  font-size: 2rem;
+  color: #00ff77;
+  text-shadow: 0 0 5px #00ff77aa, 0 0 10px #00ff77aa;
+  text-align: center;
+}
+
+/* Khi lộ ra màn hình */
+.lovely-box.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 1s ease;
+}
+
+/* work */
+/* thông tin cá nhân */
+.work-section {
+  padding: 8rem 2rem;
+  position: relative;
+  z-index: 1;
+  min-height: 50vh;
+}
+
+.work-box {
+  margin-left: 15rem;
+  display: inline-block;
+  max-width: 45rem;
+  color: white;
+  font-size: 1.8rem;
+  line-height: 2.8rem;
+  background: rgba(215, 71, 71, 0.16); /* nền đỏ mờ */
+  padding: 2rem 3rem;
+  box-shadow: 0 0 10px #ff006666, 0 0 20px #ff006633;
+  border: 1px solid #ff006699;
+  border-radius: 1.5rem;
+  position: absolute;
+  margin-top: 6rem;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease, transform 1s ease;
+  animation: borderPulseRed 3s infinite ease-in-out;
+}
+
+/* Khi lộ ra màn hình */
+.work-box.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* title của work box */
+.work-box .box__title {
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #fff;
+  font-weight: 700;
+  font-size: 2rem;
+  color: #ff0033;
+  text-shadow: 0 0 5px #ff0033aa, 0 0 10px #ff003377;
+  text-align: center;
+}
+
+/* skill */
+.skill-section {
+  margin-top: 13rem;
+  padding: 10rem 2rem;
+  z-index: 1;
+  position: relative;
+  /* vị trí đặt camera */
+  perspective: 1200px;
+  text-align: center;
+  animation: subtleTilt 5s ease-in-out infinite alternate;
+}
+
+.skill-section .box__title {
+  color: #00ffff;
+  margin-bottom: 5rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.skill-container {
+  /* bắt buộc phải có để tạo khối 3d */
+  transform-style: preserve-3d;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease, translateY 0.6s ease;
+}
+
+/* xuất hiện khi chạm giữa */
+.skill-container.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skill-control {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  transform-style: preserve-3d;
+  /* đặt trọng tâm khối 3d là ở giữa */
+  transform-origin: center center;
+  /* xoay để tạo cảm giác màng hình hướng ra ngoài */
+  transform: rotateX(-10deg);
+}
+
+/* tạo các bảng điều khiển */
+.skill {
+  width: 40rem;
+  height: 30rem;
+  background: rgba(0, 255, 255, 0.08);
+  border: 2px solid #00ffff88;
+  box-shadow: 0 0 12px #00ffff44;
+  padding: 2rem;
+  border-radius: 12px;
+  color: white;
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+  transform-origin: center;
+}
+
+/* tiêu đề các bảng */
+.skill h3 {
+  font-size: 1.8rem;
+  color: #00ffff;
+  margin-bottom: 3rem;
+}
+
+/* tạo hình khối trái */
+.skill.left {
+  transform: rotateY(30deg) translateZ(22rem) translateX(-8rem);
+}
+
+/* xếp vị trí khối giữa */
+.skill.center {
+  transform: translateZ(50px);
+}
+
+/* tạo hình khối phải */
+.skill.right {
+  transform: rotateY(-30deg) translateZ(22rem) translateX(8rem);
+}
+
+/* bảng trái */
+/* định dạng thẻ item */
+.skill__items {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.2rem;
+  gap: 1rem;
+}
+
+/* tên các thẻ items */
+.skill__items h4 {
+  flex: 1;
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+/* tạo hình phát sáng cho icon  */
+.skill__items--logo {
+  filter: drop-shadow(0 0 6px #00ffffaa);
+}
+
+/* thanh chứa điểm kĩ năng */
+.skill__items--score {
+  width: 12rem;
+  height: 1.2rem;
+  background: rgba(0, 255, 255, 0.1);
+  border: 1px solid #00ffff88;
+  box-shadow: 0 0 10px #00ffff44;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* điểm kĩ năng */
+.skill__items--score .skill__score {
+  height: 100%;
+  width: var(--value);
+  background: linear-gradient(to right, #00ffff, #00ffcc);
+  box-shadow: 0 0 8px #00ffffaa;
+  animation: pulseBar 2s infinite;
+}
+
+/* bảng giữa */
+.skill-module {
+  background: rgba(0, 255, 255, 0.03);
+  color: #00ffff;
+  padding: 1.2rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #00ffff44;
+  border-radius: 12px;
+  box-shadow: 0 0 12px #00ffff33;
+  text-shadow: 0 0 4px #00ffff99;
+  line-height: 1.8;
+  letter-spacing: 0.6px;
+}
+
+/* tiêu đề của module */
+.skill-header {
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  border-bottom: 1px dashed #00ffff88;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+/* định nghĩa các dòng thông tin */
+.skill-block {
+  margin: 0.3rem 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+/* tạo điểm nhấn cho các thẻ của dòng */
+.skill-block .label {
+  font-weight: bold;
+  opacity: 0.85;
+  font-size: 1.6rem;
+}
+
+/* bảng phải */
+.code-circuit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+/* quy ước các thuộc tính cho khối circuit */
+.circuit-node {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: rgba(0, 255, 255, 0.05);
+  border: 1px solid #00ffff55;
+  box-shadow: 0 0 8px #00ffff88;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  width: 260px;
+  position: relative;
+}
+
+/* quy ước thuộc tính cho icon của khối circuit */
+.node-icon {
+  width: 36px;
+  height: 36px;
+  filter: drop-shadow(0 0 6px #00ffffaa);
+}
+
+/* quy ước thuộc tính nội dung cho khối circuit */
+.node-content {
+  display: flex;
+  flex-direction: column;
+  color: #00ffff;
+  text-shadow: 0 0 4px #00ffff99;
+  line-height: 1.5;
+}
+
+/* tiêu đề của khối */
+.node-title {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+/* quy ước cho mã của khối */
+.node-meta {
+  font-size: 1.4rem;
+  opacity: 0.75;
+}
+
+/* quy ước điểm cho khối */
+.node-score {
+  color: #00ffff;
+  font-weight: bold;
+  text-shadow: 0 0 4px #00ffff99;
+}
+
+/* thanh kết nối */
+.circuit-connector::before {
+  content: "";
+  display: block;
+  width: 3px;
+  height: 15px;
+  background: #00ffff;
+  box-shadow: 0 0 8px #00ffffaa;
+}
+
+/* chứng chỉ - giải thưởng */
+.award-wall-section {
+  margin-top: 30rem;
+  padding: 1rem;
+}
+
+/* định dạng bảng giải thưởng */
+.award-container {
+  margin: 10rem;
+  padding: 3rem;
+  background: rgba(0, 255, 255, 0.03);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  min-height: 50vh;
+  border: 2px solid #00ffff55;
+  border-radius: 16px;
+  box-shadow: 0 0 20px #00ffcc;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease, translateY 0.6s ease;
+}
+
+/* định dạng hiện ra */
+.award-container.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* tiêu đề của bảng */
+.award-wall-section .box__title {
+  color: #00ffff;
+  font-size: 2.4rem;
+  margin-bottom: 3rem;
+  text-shadow: 0 0 10px #00ffff77;
+}
+
+/* đường kẻ phân tách tiêu đề và nội dung bảng */
+.space-divider {
+  height: 3px;
+  width: 100%;
+  margin-bottom: 5rem;
+  background: linear-gradient(to right, transparent, #00ffff88, transparent);
+  border: none;
+  box-shadow: 0 0 10px #00ffff66;
+}
+
+/* phần chứa các ô danh hiệu */
+.award-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 2rem;
+  padding: 0 4rem;
+  justify-items: center;
+}
+
+/* định dạng các ô danh hiệu */
+.award-item {
+  background: linear-gradient(145deg, #00151f, #012c2c);
+  border: 1px solid #00ffff55;
+  padding: 2rem 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 0 25px #00ffffaa, 0 0 50px #00ffff66;
+  width: 100%;
+  max-width: 280px;
+  transition: all 0.3s ease;
+  color: white;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(4px);
+}
+
+/* gắng hiệu ứng phóng to thu nhỏ box-shadow cho cóc ô có giải thưởng */
+.award-item:not(.none) {
+  animation: pulseAward 3s infinite ease-in-out;
+}
+
+/* điểm sáng bên trong khung có giải thưởng */
+.award-item:not(.none)::after {
+  content: "";
+  position: absolute;
+  top: 10%;
+  right: 15%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #00ffff;
+  filter: blur(4px);
+  animation: starBlink 2s infinite;
+}
+
+/* vệt sáng bên trong khung có giải thưởng */
+.award-item:not(.none)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 80% 20%, #00ffff55 0%, transparent 40%);
+  animation: floatGlow 6s ease-in-out infinite;
+  border-radius: 15px;
+  z-index: 0;
+}
+
+/* tạo hiệu ứng rung khi hovver vào ô có giải thưởng */
+.award-item:hover:not(.none) {
+  box-shadow: 0 0 25px #00ffffcc;
+  animation: swing-hover 0.5s ease-in-out;
+  transform: translateY(-5px);
+  transform: perspective(1000px) rotateX(2deg) rotateY(-3deg);
+  transition: transform 0.4s ease;
+}
+
+/* định dạng ô trống */
+.none {
+  background-color: rgba(0, 255, 255, 0.03);
+  border: 1px dashed #00ffff33;
+  box-shadow: 0 0 10px #00ffff11 inset;
+  position: relative;
+}
+
+/* thêm ổ khóa và hiệu ứng phóng to thu nhỏ ổ khóa trong ô trống */
+.none::after {
+  content: "🔒";
+  font-size: 2.4rem;
+  color: #00ffff88;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: fadeLock 2s infinite;
+  opacity: 0.6;
+}
+
+/* thêm nền lưới cho ô trống */
+.none::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(0, 255, 255, 0.05),
+    rgba(0, 255, 255, 0.05) 2px,
+    transparent 2px,
+    transparent 6px
+  );
+  z-index: 0;
+}
+
+/* tiêu đề giải thưởng */
+.award-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #00ffff;
+  text-shadow: 0 0 6px #00ffff99;
+  margin-bottom: 1rem;
+}
+
+/* năm đoạt giải */
+.award-year {
+  font-size: 1.4rem;
+  color: #b1faff;
+  text-shadow: 0 0 4px #00ffff66;
+  opacity: 0.7;
+  margin-bottom: 0.8rem;
+}
+
+/* nội dung giải */
+.award-detail {
+  font-size: 1.4rem;
+  color: #b1faff;
+  text-shadow: 0 0 4px #00ffff66;
+  line-height: 1.8rem;
+  opacity: 0.9;
+}
+
+/* project */
+.project-section {
+  padding: 10rem 2rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.project-container .box__title {
+  font-size: 3.2rem; /* to hơn */
+  color: #00ffff;
+  text-align: center;
+  text-shadow: 0 0 12px #00ffffaa;
+  letter-spacing: 1px;
+  margin-bottom: 4rem;
+  position: relative;
+  display: inline-block;
+  animation: glowTitle 2s ease-in-out infinite alternate;
+}
+
+.project-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+  align-items: center;
+  position: relative;
+  margin-top: 5rem;
+}
+
+.project-node {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  max-width: 800px;
+  width: 100%;
+  position: relative;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.6s ease;
+}
+
+.project-node:not(.node-end)::before {
+  content: "";
+  position: absolute;
+  left: 29px; /* canh giữa hành tinh */
+  top: 60px;
+  width: 2px;
+  height: calc(100% + 6rem);
+  background: linear-gradient(to bottom, #00ffff88, transparent);
+  z-index: 0;
+}
+
+.project-node.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.planet {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #00ffff, #004466);
+  box-shadow: 0 0 20px #00ffff88;
+  animation: floatPlanet 4s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.project-info {
+  background: rgba(0, 255, 255, 0.05);
+  border: 1px solid #00ffff55;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 0 15px #00ffff22;
+  text-align: left;
+  flex: 1;
+  color: white;
+}
+
+.project-info h3 {
+  color: #00ffff;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 6px #00ffff99;
+}
+
+.project-info p {
+  font-size: 1.5rem;
+  line-height: 2.6rem;
+  margin-bottom: 1rem;
+  opacity: 0.9;
+}
+
+.project-tags {
+  margin-bottom: 1.2rem;
+  color: #aefaf5;
+  font-size: 1.3rem;
+  line-height: 2.2rem;
+}
+
+.project-buttons {
+  margin-top: 1.2rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.project-btn {
+  padding: 0.6rem 1.4rem;
+  border: 1px solid #00ffff88;
+  color: #00ffff;
+  background: rgba(0, 255, 255, 0.05);
+  border-radius: 8px;
+  font-size: 1.3rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px #00ffff33;
+}
+
+.project-btn:hover {
+  background: #00ffff22;
+  box-shadow: 0 0 20px #00ffff88;
+  transform: scale(1.05);
+}
+
+/* hiệu ứng viền đỏ nhấp nháy */
+@keyframes borderPulseRed {
+  0% {
+    box-shadow: 0 0 6px #ff006655;
+  }
+  50% {
+    box-shadow: 0 0 15px #ff0033;
+  }
+  100% {
+    box-shadow: 0 0 6px #ff006655;
+  }
+}
+
+/* hiệu ứng */
+/* hiệu ứng tạo điểm nhấn cho tên ý tưởng sẽ cho tên phóng to thu nhỏ và đổi màu theo nhịp đập */
+@keyframes pulsehiglightrGlow {
+  0% {
+    transform: scale(1);
+    color: #aefaf5; /* Xanh nhạt mềm */
+    text-shadow: 0 0 8px rgba(174, 250, 245, 0.5);
+  }
+
+  50% {
+    transform: scale(1.08);
+    color: #98e0ff; /* Xanh dương nhẹ */
+    text-shadow: 0 0 18px rgba(152, 224, 255, 0.6);
+  }
+
+  100% {
+    transform: scale(1);
+    color: #aefaf5;
+    text-shadow: 0 0 8px rgba(174, 250, 245, 0.5);
+  }
+}
+
+/* hiệu ứng cho text ý tưởng phóng to rồi lại thu nhỏ theo từng giai đoạn */
+@keyframes pulseGlow {
+  0% {
+    text-shadow: 0 0 12px #00c9a7;
+    transform: scale(1);
+  }
+  50% {
+    text-shadow: 0 0 32px #00c9a7;
+    transform: scale(1.02);
+  }
+  100% {
+    text-shadow: 0 0 12px #00c9a7;
+    transform: scale(1);
+  }
+}
+
+/* Phi thuyền bay lên xuống ý tưởng phi thuyền sẽ phóng to và duy chuyển lên đồng thời có 1 tí lắt nhẹ */
+@keyframes flyUp {
+  0% {
+    transform: translateY(0) scale(1) rotate(-0.5deg);
+  }
+  50% {
+    transform: translateY(-80px) scale(1.05) rotate(0.5deg);
+  }
+  100% {
+    transform: translateY(-160px) scale(1.07) rotate(0deg);
+  }
+}
+
+/* hiệu ứng xé gió ý tương luồn gió sẽ duy chuyển lên đồng thời sẽ phóng to độ dài hơn và độ mờ tăng dần*/
+@keyframes windTrailAnim {
+  0% {
+    height: 60px;
+    opacity: 0.4;
+    transform: translate(-50%, 0);
+  }
+  50% {
+    height: 110px;
+    opacity: 0.2;
+    transform: translate(-50%, -60px);
+  }
+  100% {
+    height: 160px;
+    opacity: 0;
+    transform: translateX(-50%) translateY(-120px);
+  }
+}
+
+/* hiệu ứng viền nhấp nháy cho phần info */
+@keyframes borderPulse {
+  0% {
+    box-shadow: 0 0 6px #00ffff55;
+  }
+  50% {
+    box-shadow: 0 0 15px #00ffff;
+  }
+  100% {
+    box-shadow: 0 0 6px #00ffff55;
+  }
+}
+
+/* hiệu ứng viền xanh lá nhấp nháy */
+@keyframes borderPulseGreen {
+  0% {
+    box-shadow: 0 0 6px #00ff7755;
+  }
+  50% {
+    box-shadow: 0 0 15px #00ff77;
+  }
+  100% {
+    box-shadow: 0 0 6px #00ff7755;
+  }
+}
+
+/* tự động rung khung điều khiển */
+@keyframes subtleTilt {
+  0% {
+    transform: rotateX(8deg) rotateY(8deg);
+  }
+  50% {
+    transform: rotateX(10deg) rotateY(6deg);
+  }
+  100% {
+    transform: rotateX(7deg) rotateY(10deg);
+  }
+}
+
+/* hiệu ứng điểm kĩ năng tạo hiệu ứng nhấp nháy của khối trái */
+@keyframes pulseBar {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* hiệu ứng rung lắt của items giải thưởng */
+@keyframes swing-hover {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(1deg);
+  }
+  50% {
+    transform: rotate(-1deg);
+  }
+  75% {
+    transform: rotate(1deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/* hiệu ứng đóm sáng nhấp nháy ổ khóa của khung trống */
+@keyframes fadeLock {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.3;
+  }
+}
+
+/* hiệu ứng box-shadow phóng to thu nhỏ */
+@keyframes pulseAward {
+  0% {
+    box-shadow: 0 0 10px #00ffff88, 0 0 20px #00ffff33;
+  }
+  50% {
+    box-shadow: 0 0 40px #00ffff, 0 0 80px #00ffff66;
+  }
+  100% {
+    box-shadow: 0 0 10px #00ffff88, 0 0 20px #00ffff33;
+  }
+}
+
+/* hiệu ứng ngôi sao nhấp nháy trong khung */
+@keyframes starBlink {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.6);
+  }
+}
+
+/* hiệu ứng ánh sáng chuyển động trong khung */
+@keyframes floatGlow {
+  0%,
+  100% {
+    background-position: 80% 20%;
+  }
+  50% {
+    background-position: 20% 80%;
+  }
+}
+
+/* hiệu ứng bóng chữ ẩn hiện*/
+@keyframes glowTitle {
+  0% {
+    text-shadow: 0 0 6px #00ffff55, 0 0 10px #00ffff55;
+  }
+  100% {
+    text-shadow: 0 0 12px #00ffffcc, 0 0 20px #00ffff88;
+  }
+}
+
+/* hiệu ứng dao động lên xuống của các hình tròng phía trước */
+@keyframes floatPlanet {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
