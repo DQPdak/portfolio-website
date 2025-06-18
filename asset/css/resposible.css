@@ -98,10 +98,17 @@
     display: block;
   }
 
+  /* chỉnh lại margin-bottom cho banner-left */
   .banner .banner-left {
     margin-bottom: 20rem;
   }
 
+  /* hiệu ứng lực đẩy */
+  .wind-trail {
+    left: 50%;
+  }
+
+  /* quy định lại độ rộng cho info-box, lovely-box, work-box */
   .info-box,
   .lovely-box,
   .work-box {
@@ -109,19 +116,24 @@
     text-align: center;
   }
 
+  /* quy ước lại margin-top cho lovely-box */
   .lovely-box {
     margin-top: 15rem;
   }
 
+  /* quy định lovely-items dồn về giữa */
   .lovely__items {
     justify-content: center;
   }
 
+  /* quy ước cho work-box */
   .work-box {
     max-width: 50rem;
     margin-top: 0;
     margin-left: 9.3rem;
   }
+
+  /* tắt các hiệu ứng 3d của skill */
   .skill-section,
   .skill-container,
   .skill-container .skill-control {
@@ -130,10 +142,12 @@
     perspective: none !important;
   }
 
+  /* quy ước các ô của skill thẳng hàng với nhau */
   .skill-control {
     display: block;
   }
 
+  /* quy ước các thuộc tính cho ô skill */
   .skill {
     width: 100%;
     transform: none !important;
@@ -142,15 +156,13 @@
     margin-bottom: 3rem;
   }
 
+  /* quy định lại bức tường danh hiệu */
   .award-section {
     margin-top: 8rem;
   }
 
   .award-container {
     margin: 2rem;
-  }
-  .wind-trail {
-    left: 50%;
   }
 }
 
@@ -160,30 +172,37 @@
 
 /* mobile */
 @media (max-width: 767.98px) {
+  /* giảm kích thước của html lại */
   html {
     font-size: 50%;
   }
 
+  /* quy định lại banner-left h1 */
   .banner-left h1 {
     margin-left: 3rem;
   }
 
+  /* quy định lại ảnh tên lửa */
   .banner-right img {
     margin-left: 3rem;
   }
 
+  /* quy định lại hộp thông tin */
   .info-box {
     margin-left: -2rem;
   }
 
+  /* quy định lại hợp sở thích cá nhân */
   .lovely-box {
     right: 0%;
   }
 
+  /* quy định lại hộp mục tiêu nghề nghiệp */
   .work-box {
     margin-left: -1.7rem;
   }
 
+  /* quy định lại bức tường danh hiệu */
   .award-grid {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 1fr);
