@@ -30,6 +30,11 @@ svg {
   height: 2.4rem;
 }
 
+/* ảnh phụ mặc định ẩn */
+.profile-extra-image {
+  display: none;
+}
+
 /* background vũ trụ đầy sao */
 canvas#bg {
   position: fixed;
@@ -353,7 +358,7 @@ strong {
 
 .work-box {
   margin-left: 2rem;
-  margin-top: 15rem;
+  margin-top: 20rem;
   display: inline-block;
   max-width: 40rem;
   color: white;
