@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./asset/css/reset.css" />
     <link rel="stylesheet" href="./asset/css/style.css" />
+    <link rel="stylesheet" href="./asset/css/resposible.css" />
     <title>Digital CV 3D - Đặng Quốc Phong</title>
   </head>
   <body>
@@ -14,13 +15,42 @@
     <!-- Navbar -->
     <header class="navbar">
       <nav>
-        <ul>
+        <div class="menu-toggle" id="menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-overlay" id="menu-overlay"></div>
+        <ul id="navbar-menu">
           <li><a href="#profile">Thông Tin Cá Nhân</a></li>
           <li><a href="#lovely">Sở Thích Cá Nhân</a></li>
           <li><a href="#work">Mục Tiêu Công Việc</a></li>
           <li><a href="#skill">Kỹ Năng</a></li>
           <li><a href="#award">Chứng Chỉ - Giải Thưởng</a></li>
           <li><a href="#project">Dự án</a></li>
+          <li><a href="#contact">Liên hệ</a></li>
+          <a href="#" download class="cv-download">
+            <svg
+              fill="#fff"
+              width="800"
+              height="800"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                class="clr-i-outline clr-i-outline-path-1"
+                d="M31 31H5a1 1 0 0 0 0 2h26a1 1 0 0 0 0-2"
+              />
+              <path
+                class="clr-i-outline clr-i-outline-path-2"
+                d="m18 29.48 10.61-10.61a1 1 0 0 0-1.41-1.41L19 25.65V5a1 1 0 0 0-2 0v20.65l-8.19-8.19a1 1 0 1 0-1.41 1.41Z"
+              />
+              <path fill="none" d="M0 0h36v36H0z" />
+            </svg>
+            <div>Tải CV</div>
+          </a>
+        </ul>
+        <div class="menu-close" id="menu-close">×</div>
       </nav>
     </header>
 
@@ -29,7 +59,7 @@
       <section class="banner">
         <div class="banner-left">
           <h1>
-            Xin chào mọi người,<br />lại là
+            Xin chào mọi người<br />lại là
             <span class="hightlight">Quốc Phong</span> đây 👨‍🚀
           </h1>
         </div>
@@ -460,7 +490,7 @@
         </div>
       </section>
       <!-- chứng chỉ - giải thưởng -->
-      <section id="award" class="award-wall-section">
+      <section id="award" class="award-section">
         <div class="award-container">
           <h2 class="box__title">🪐 Bức Tường Giải Thưởng</h2>
           <div class="space-divider"></div>
@@ -472,21 +502,6 @@
               <p class="award-detail">Chứng chỉ thi tin học trẻ tỉnh</p>
             </div>
             <!-- Có thể thêm nhiều khung như dưới đây -->
-            <div class="award-item none">
-              <h3 class="award-title"></h3>
-              <p class="award-year"></p>
-              <p class="award-detail"></p>
-            </div>
-            <div class="award-item none">
-              <h3 class="award-title"></h3>
-              <p class="award-year"></p>
-              <p class="award-detail"></p>
-            </div>
-            <div class="award-item none">
-              <h3 class="award-title"></h3>
-              <p class="award-year"></p>
-              <p class="award-detail"></p>
-            </div>
             <div class="award-item none">
               <h3 class="award-title"></h3>
               <p class="award-year"></p>
@@ -535,13 +550,56 @@
                     href="https://dqpdak.github.io/project_4"
                     target="_blank"
                     class="project-btn demo"
-                    >🌐 Xem Dự Án</a
+                    ><svg
+                      width="800"
+                      height="800"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="cyan"
+                    >
+                      <path
+                        d="M3.512 15h4.66A26 26 0 0 1 8 12c0-1.044.06-2.052.172-3h-4.66A9 9 0 0 0 3 12c0 1.052.18 2.062.512 3m.424 1a9.02 9.02 0 0 0 6.092 4.783c-.78-1.06-1.376-2.746-1.714-4.783zm16.552-1A9 9 0 0 0 21 12c0-1.052-.18-2.062-.512-3h-4.66c.113.948.172 1.956.172 3s-.06 2.052-.172 3zm-.424 1h-4.378c-.338 2.037-.935 3.723-1.714 4.783A9.02 9.02 0 0 0 20.064 16m-10.88-1h5.632c.118-.938.184-1.947.184-3s-.066-2.062-.184-3H9.184A24 24 0 0 0 9 12c0 1.053.066 2.062.184 3m.151 1c.522 2.968 1.583 5 2.665 5s2.143-2.032 2.665-5zm-5.4-8h4.379c.338-2.037.935-3.723 1.714-4.783A9.02 9.02 0 0 0 3.936 8m16.13 0a9.02 9.02 0 0 0-6.093-4.783c.78 1.06 1.376 2.746 1.714 4.783zM9.334 8h5.33C14.143 5.032 13.082 3 12 3S9.857 5.032 9.335 8M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10"
+                      />
+                    </svg>
+                    <div>Xem Dự Án</div></a
                   >
                   <a
                     href="https://github.com/DQPdak/project_4"
                     target="_blank"
                     class="project-btn github"
-                    >💻 GitHub</a
+                    ><?xml version="1.0" ?><!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+                    <svg
+                      height="78px"
+                      id="Capa_1"
+                      style="enable-background: new 0 0 92 78"
+                      version="1.1"
+                      viewBox="0 0 92 78"
+                      width="92px"
+                      xml:space="preserve"
+                      xmlns="http://www.w3.org/2000/svg"
+                      xmlns:xlink="http://www.w3.org/1999/xlink"
+                      fill="cyan"
+                    >
+                      <path
+                        d="M61.896,45.548c-3.59,0-6.502,4.026-6.502,8.996c0,4.971,2.912,8.999,6.502,8.999c3.588,0,6.498-4.028,6.498-8.999  C68.395,49.574,65.484,45.548,61.896,45.548z M84.527,22.132c0.74-1.826,0.777-12.201-3.17-22.132c0,0-9.057,0.993-22.76,10.396  C55.725,9.603,50.861,9.206,46,9.206s-9.723,0.396-12.598,1.189C19.699,0.993,10.645,0,10.645,0  C6.697,9.931,6.732,20.306,7.473,22.132C2.834,27.169,0,33.218,0,41.483c0,35.932,29.809,36.508,37.334,36.508  c1.703,0,5.088,0.004,8.666,0.009c3.578-0.005,6.965-0.009,8.666-0.009C62.191,77.991,92,77.415,92,41.483  C92,33.218,89.166,27.169,84.527,22.132z M46.141,73.574h-0.281c-18.859,0-33.545-2.252-33.545-20.58  c0-4.389,1.549-8.465,5.229-11.847c6.141-5.636,16.527-2.651,28.316-2.651c0.045,0,0.093-0.001,0.141-0.003  c0.049,0.002,0.096,0.003,0.141,0.003c11.789,0,22.178-2.984,28.316,2.651c3.68,3.382,5.229,7.458,5.229,11.847  C79.686,71.322,65,73.574,46.141,73.574z M30.104,45.548c-3.588,0-6.498,4.026-6.498,8.996c0,4.971,2.91,8.999,6.498,8.999  c3.592,0,6.502-4.028,6.502-8.999C36.605,49.574,33.695,45.548,30.104,45.548z"
+                      />
+                      <g />
+                      <g />
+                      <g />
+                      <g />
+                      <g />
+                      <g />
+                      <g />
+                      <g />
+                      <g />
+                      <g />
+                      <g />
+                      <g />
+                      <g />
+                      <g />
+                      <g />
+                    </svg>
+                    <div>github</div></a
                   >
                 </div>
               </div>
@@ -562,13 +620,56 @@
                     href="https://dqpdak.github.io/sn-lam/"
                     target="_blank"
                     class="project-btn demo"
-                    >🌐 Xem Dự Án</a
+                    ><svg
+                      width="800"
+                      height="800"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="cyan"
+                    >
+                      <path
+                        d="M3.512 15h4.66A26 26 0 0 1 8 12c0-1.044.06-2.052.172-3h-4.66A9 9 0 0 0 3 12c0 1.052.18 2.062.512 3m.424 1a9.02 9.02 0 0 0 6.092 4.783c-.78-1.06-1.376-2.746-1.714-4.783zm16.552-1A9 9 0 0 0 21 12c0-1.052-.18-2.062-.512-3h-4.66c.113.948.172 1.956.172 3s-.06 2.052-.172 3zm-.424 1h-4.378c-.338 2.037-.935 3.723-1.714 4.783A9.02 9.02 0 0 0 20.064 16m-10.88-1h5.632c.118-.938.184-1.947.184-3s-.066-2.062-.184-3H9.184A24 24 0 0 0 9 12c0 1.053.066 2.062.184 3m.151 1c.522 2.968 1.583 5 2.665 5s2.143-2.032 2.665-5zm-5.4-8h4.379c.338-2.037.935-3.723 1.714-4.783A9.02 9.02 0 0 0 3.936 8m16.13 0a9.02 9.02 0 0 0-6.093-4.783c.78 1.06 1.376 2.746 1.714 4.783zM9.334 8h5.33C14.143 5.032 13.082 3 12 3S9.857 5.032 9.335 8M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10"
+                      />
+                    </svg>
+                    <div>Xem Dự Án</div></a
                   >
                   <a
                     href="https://github.com/DQPdak/sn-lam"
                     target="_blank"
                     class="project-btn github"
-                    >💻 GitHub</a
+                    ><?xml version="1.0" ?><!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+                    <svg
+                      height="78px"
+                      id="Capa_1"
+                      style="enable-background: new 0 0 92 78"
+                      version="1.1"
+                      viewBox="0 0 92 78"
+                      width="92px"
+                      xml:space="preserve"
+                      xmlns="http://www.w3.org/2000/svg"
+                      xmlns:xlink="http://www.w3.org/1999/xlink"
+                      fill="cyan"
+                    >
+                      <path
+                        d="M61.896,45.548c-3.59,0-6.502,4.026-6.502,8.996c0,4.971,2.912,8.999,6.502,8.999c3.588,0,6.498-4.028,6.498-8.999  C68.395,49.574,65.484,45.548,61.896,45.548z M84.527,22.132c0.74-1.826,0.777-12.201-3.17-22.132c0,0-9.057,0.993-22.76,10.396  C55.725,9.603,50.861,9.206,46,9.206s-9.723,0.396-12.598,1.189C19.699,0.993,10.645,0,10.645,0  C6.697,9.931,6.732,20.306,7.473,22.132C2.834,27.169,0,33.218,0,41.483c0,35.932,29.809,36.508,37.334,36.508  c1.703,0,5.088,0.004,8.666,0.009c3.578-0.005,6.965-0.009,8.666-0.009C62.191,77.991,92,77.415,92,41.483  C92,33.218,89.166,27.169,84.527,22.132z M46.141,73.574h-0.281c-18.859,0-33.545-2.252-33.545-20.58  c0-4.389,1.549-8.465,5.229-11.847c6.141-5.636,16.527-2.651,28.316-2.651c0.045,0,0.093-0.001,0.141-0.003  c0.049,0.002,0.096,0.003,0.141,0.003c11.789,0,22.178-2.984,28.316,2.651c3.68,3.382,5.229,7.458,5.229,11.847  C79.686,71.322,65,73.574,46.141,73.574z M30.104,45.548c-3.588,0-6.498,4.026-6.498,8.996c0,4.971,2.91,8.999,6.498,8.999  c3.592,0,6.502-4.028,6.502-8.999C36.605,49.574,33.695,45.548,30.104,45.548z"
+                      />
+                      <g />
+                      <g />
+                      <g />
+                      <g />
+                      <g />
+                      <g />
+                      <g />
+                      <g />
+                      <g />
+                      <g />
+                      <g />
+                      <g />
+                      <g />
+                      <g />
+                      <g />
+                    </svg>
+                    <div>github</div></a
                   >
                 </div>
               </div>
@@ -590,13 +691,56 @@
                     href="https://dqpdak.github.io/Clock/"
                     target="_blank"
                     class="project-btn demo"
-                    >🌐 Xem Dự Án</a
+                    ><svg
+                      width="800"
+                      height="800"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="cyan"
+                    >
+                      <path
+                        d="M3.512 15h4.66A26 26 0 0 1 8 12c0-1.044.06-2.052.172-3h-4.66A9 9 0 0 0 3 12c0 1.052.18 2.062.512 3m.424 1a9.02 9.02 0 0 0 6.092 4.783c-.78-1.06-1.376-2.746-1.714-4.783zm16.552-1A9 9 0 0 0 21 12c0-1.052-.18-2.062-.512-3h-4.66c.113.948.172 1.956.172 3s-.06 2.052-.172 3zm-.424 1h-4.378c-.338 2.037-.935 3.723-1.714 4.783A9.02 9.02 0 0 0 20.064 16m-10.88-1h5.632c.118-.938.184-1.947.184-3s-.066-2.062-.184-3H9.184A24 24 0 0 0 9 12c0 1.053.066 2.062.184 3m.151 1c.522 2.968 1.583 5 2.665 5s2.143-2.032 2.665-5zm-5.4-8h4.379c.338-2.037.935-3.723 1.714-4.783A9.02 9.02 0 0 0 3.936 8m16.13 0a9.02 9.02 0 0 0-6.093-4.783c.78 1.06 1.376 2.746 1.714 4.783zM9.334 8h5.33C14.143 5.032 13.082 3 12 3S9.857 5.032 9.335 8M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10"
+                      />
+                    </svg>
+                    <div>Xem Dự Án</div></a
                   >
                   <a
                     href="https://github.com/DQPdak/Clock"
                     target="_blank"
                     class="project-btn github"
-                    >💻 GitHub</a
+                    ><?xml version="1.0" ?><!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+                    <svg
+                      height="78px"
+                      id="Capa_1"
+                      style="enable-background: new 0 0 92 78"
+                      version="1.1"
+                      viewBox="0 0 92 78"
+                      width="92px"
+                      xml:space="preserve"
+                      xmlns="http://www.w3.org/2000/svg"
+                      xmlns:xlink="http://www.w3.org/1999/xlink"
+                      fill="cyan"
+                    >
+                      <path
+                        d="M61.896,45.548c-3.59,0-6.502,4.026-6.502,8.996c0,4.971,2.912,8.999,6.502,8.999c3.588,0,6.498-4.028,6.498-8.999  C68.395,49.574,65.484,45.548,61.896,45.548z M84.527,22.132c0.74-1.826,0.777-12.201-3.17-22.132c0,0-9.057,0.993-22.76,10.396  C55.725,9.603,50.861,9.206,46,9.206s-9.723,0.396-12.598,1.189C19.699,0.993,10.645,0,10.645,0  C6.697,9.931,6.732,20.306,7.473,22.132C2.834,27.169,0,33.218,0,41.483c0,35.932,29.809,36.508,37.334,36.508  c1.703,0,5.088,0.004,8.666,0.009c3.578-0.005,6.965-0.009,8.666-0.009C62.191,77.991,92,77.415,92,41.483  C92,33.218,89.166,27.169,84.527,22.132z M46.141,73.574h-0.281c-18.859,0-33.545-2.252-33.545-20.58  c0-4.389,1.549-8.465,5.229-11.847c6.141-5.636,16.527-2.651,28.316-2.651c0.045,0,0.093-0.001,0.141-0.003  c0.049,0.002,0.096,0.003,0.141,0.003c11.789,0,22.178-2.984,28.316,2.651c3.68,3.382,5.229,7.458,5.229,11.847  C79.686,71.322,65,73.574,46.141,73.574z M30.104,45.548c-3.588,0-6.498,4.026-6.498,8.996c0,4.971,2.91,8.999,6.498,8.999  c3.592,0,6.502-4.028,6.502-8.999C36.605,49.574,33.695,45.548,30.104,45.548z"
+                      />
+                      <g />
+                      <g />
+                      <g />
+                      <g />
+                      <g />
+                      <g />
+                      <g />
+                      <g />
+                      <g />
+                      <g />
+                      <g />
+                      <g />
+                      <g />
+                      <g />
+                      <g />
+                    </svg>
+                    <div>github</div></a
                   >
                 </div>
               </div>
@@ -604,7 +748,137 @@
           </div>
         </div>
       </section>
+      <!-- liên hệ -->
+      <section id="contact" class="contact-section">
+        <h2 class="box__title">🔭 Định Vị Liên Hệ</h2>
+        <div class="contact-container">
+          <div class="radar">
+            <div class="sweep"></div>
+            <div class="blip" style="top: 30%; left: 60%"></div>
+            <div class="blip" style="top: 60%; left: 30%"></div>
+            <div
+              class="blip"
+              style="top: 50%; left: 50%; animation-delay: 2s"
+            ></div>
+          </div>
+          <div class="contact-links">
+            <a href="https://www.facebook.com/vu.windy.58" target="_blank"
+              ><svg
+                width="800"
+                height="800"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M4 1031.4c-1.105 0-2 .9-2 2v16c0 1.1.895 2 2 2h16c1.105 0 2-.9 2-2v-16c0-1.1-.895-2-2-2z"
+                  fill="#30497b"
+                  transform="translate(0 -1028.4)"
+                />
+                <path
+                  d="M4 1030.4a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-16a2 2 0 0 0-2-2z"
+                  fill="#3b5998"
+                  transform="translate(0 -1028.4)"
+                />
+                <path
+                  d="M17 1034.4c-2.209 0-4 1.8-4 4v3h-2v3h2v7h3v-7h2.454l.546-3h-3v-3c0-.6.448-1 1-1h2v-3z"
+                  fill="#30497b"
+                  transform="translate(0 -1028.4)"
+                />
+                <path
+                  d="M17 1033.4a4 4 0 0 0-4 4v3h-2v3h2v7h3v-7h2.454l.546-3h-3v-3a1 1 0 0 1 1-1h2v-3z"
+                  fill="#ecf0f1"
+                  transform="translate(0 -1028.4)"
+                />
+                <path
+                  fill="#bdc3c7"
+                  d="M13 1050.4h3v1h-3z"
+                  transform="translate(0 -1028.4)"
+                />
+              </svg>
+              <div>facebook</div></a
+            >
+            <a href="mailto:quocphong23082005@gmail.com" target="_blank"
+              ><?xml version="1.0" ?><!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+              <svg
+                height="512px"
+                style="enable-background: new 0 0 512 512"
+                version="1.1"
+                viewBox="0 0 512 512"
+                width="512px"
+                xml:space="preserve"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+              >
+                <g id="_x31_12-gmail_x2C__email_x2C__mail">
+                  <g>
+                    <g>
+                      <g>
+                        <rect
+                          height="358.87"
+                          style="fill: #f1f5f7"
+                          width="357.904"
+                          x="77.045"
+                          y="76.565"
+                        />
+                        <path
+                          d="M256.002,293.738l178.947,141.697v-279.74L256.002,293.738z M256.002,293.738"
+                          style="fill: #dce6ea"
+                        />
+                        <path
+                          d="M449.861,76.565h-14.912L256.002,218.26L77.045,76.565H62.134      c-24.693,0-44.737,20.094-44.737,44.858v269.152c0,24.759,20.044,44.859,44.737,44.859h14.911v-279.74l178.957,138.014      l178.947-138.047v279.773h14.912c24.699,0,44.742-20.101,44.742-44.859V121.424C494.604,96.66,474.561,76.565,449.861,76.565      L449.861,76.565z M449.861,76.565"
+                          style="fill: #f84437"
+                        />
+                      </g>
+                    </g>
+                  </g>
+                </g>
+                <g id="Layer_1" />
+              </svg>
+              <div>Email</div></a
+            >
+            <a href="https://github.com/DQPdak" target="_blank"
+              ><?xml version="1.0" ?><!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+              <svg
+                height="78px"
+                id="Capa_1"
+                style="enable-background: new 0 0 92 78"
+                version="1.1"
+                viewBox="0 0 92 78"
+                width="92px"
+                xml:space="preserve"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                fill="cyan"
+              >
+                <path
+                  d="M61.896,45.548c-3.59,0-6.502,4.026-6.502,8.996c0,4.971,2.912,8.999,6.502,8.999c3.588,0,6.498-4.028,6.498-8.999  C68.395,49.574,65.484,45.548,61.896,45.548z M84.527,22.132c0.74-1.826,0.777-12.201-3.17-22.132c0,0-9.057,0.993-22.76,10.396  C55.725,9.603,50.861,9.206,46,9.206s-9.723,0.396-12.598,1.189C19.699,0.993,10.645,0,10.645,0  C6.697,9.931,6.732,20.306,7.473,22.132C2.834,27.169,0,33.218,0,41.483c0,35.932,29.809,36.508,37.334,36.508  c1.703,0,5.088,0.004,8.666,0.009c3.578-0.005,6.965-0.009,8.666-0.009C62.191,77.991,92,77.415,92,41.483  C92,33.218,89.166,27.169,84.527,22.132z M46.141,73.574h-0.281c-18.859,0-33.545-2.252-33.545-20.58  c0-4.389,1.549-8.465,5.229-11.847c6.141-5.636,16.527-2.651,28.316-2.651c0.045,0,0.093-0.001,0.141-0.003  c0.049,0.002,0.096,0.003,0.141,0.003c11.789,0,22.178-2.984,28.316,2.651c3.68,3.382,5.229,7.458,5.229,11.847  C79.686,71.322,65,73.574,46.141,73.574z M30.104,45.548c-3.588,0-6.498,4.026-6.498,8.996c0,4.971,2.91,8.999,6.498,8.999  c3.592,0,6.502-4.028,6.502-8.999C36.605,49.574,33.695,45.548,30.104,45.548z"
+                />
+                <g />
+                <g />
+                <g />
+                <g />
+                <g />
+                <g />
+                <g />
+                <g />
+                <g />
+                <g />
+                <g />
+                <g />
+                <g />
+                <g />
+                <g />
+              </svg>
+              <div>github</div></a
+            >
+          </div>
+        </div>
+      </section>
     </div>
+    <footer class="footer">
+      🚀 Cảm ơn bạn đã quét qua hành trình không gian của mình.<br />
+      <span>&copy; 2025 Phong Windy · Made in the Stars ✨</span>
+    </footer>
     <script type="module" src="./asset/js/script.js"></script>
   </body>
 </html>

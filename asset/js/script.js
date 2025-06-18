@@ -69,39 +69,41 @@ scene.add(modelGroup);
 
 // tải mô hình người
 const loader = new GLTFLoader();
-loader.load(
-  "asset/models/man_in_suit.glb",
-  (gltf) => {
-    // gán model là mô hình gốc
-    model = gltf.scene;
-    // mức độ phóng to của model
-    model.scale.set(0.1, 0.1, 0.1);
-    // vị trí của model
-    model.position.set(0, -10, 0);
-    // vị trí của camera
-    camera.position.set(0, 0, 25);
+if (window.innerWidth >= 1024) {
+  loader.load(
+    "asset/models/man_in_suit.glb",
+    (gltf) => {
+      // gán model là mô hình gốc
+      model = gltf.scene;
+      // mức độ phóng to của model
+      model.scale.set(0.1, 0.1, 0.1);
+      // vị trí của model
+      model.position.set(0, -10, 0);
+      // vị trí của camera
+      camera.position.set(0, 0, 25);
 
-    //Chuyển toàn bộ mesh về material chuẩn
-    model.traverse((child) => {
-      // kiểm tra xem child có phải là 1 mesh không nếu phải gán lại thuộc tính materal thành kiêm loại chẩn
-      if (child.isMesh) {
-        child.material = new THREE.MeshStandardMaterial({
-          color: 0xffffff, // màu sắc
-          metalness: 0.2, // tính kiêm loại
-          roughness: 0.7, // độ nhám
-        });
-      }
-    });
-    // thêm model và modelgroup
-    modelGroup.add(model);
-  },
-  //nếu child không thuộc danh sách mesh thì sẽ xuất biên rỗng
-  undefined,
-  // nếu lỗi thì sẽ thông báo
-  (error) => {
-    console.error(" Lỗi khi tải mô hình:", error);
-  }
-);
+      //Chuyển toàn bộ mesh về material chuẩn
+      model.traverse((child) => {
+        // kiểm tra xem child có phải là 1 mesh không nếu phải gán lại thuộc tính materal thành kiêm loại chẩn
+        if (child.isMesh) {
+          child.material = new THREE.MeshStandardMaterial({
+            color: 0xffffff, // màu sắc
+            metalness: 0.2, // tính kiêm loại
+            roughness: 0.7, // độ nhám
+          });
+        }
+      });
+      // thêm model và modelgroup
+      modelGroup.add(model);
+    },
+    //nếu child không thuộc danh sách mesh thì sẽ xuất biên rỗng
+    undefined,
+    // nếu lỗi thì sẽ thông báo
+    (error) => {
+      console.error(" Lỗi khi tải mô hình:", error);
+    }
+  );
+}
 // biến xoay
 let scrolly = 0;
 //   mô hình người xoay theo Scroll
@@ -185,11 +187,60 @@ function checkAllBoxesVisible() {
 }
 
 // hàm cho phép xoay khối skill theo chuột
-document.addEventListener("mousemove", (e) => {
+function handleSkillHoverEffect(e) {
   const deck = document.querySelector(".skill-container");
-  const x = (e.clientX / window.innerWidth - 0.5) * 30;
-  const y = (e.clientY / window.innerHeight - 0.5) * 20;
-  deck.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
+  if (!deck) return;
+
+  if (window.innerWidth > 1140) {
+    const x = (e.clientX / window.innerWidth - 0.5) * 30;
+    const y = (e.clientY / window.innerHeight - 0.5) * 20;
+    deck.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
+  } else {
+    // reset lại xoay mỗi lần chuột di chuyển nếu dưới 1140
+    deck.style.transform = "none";
+  }
+}
+
+document.addEventListener("mousemove", handleSkillHoverEffect);
+
+// tắt hiệu ứng khi reset size
+window.addEventListener("resize", () => {
+  const deck = document.querySelector(".skill-container");
+  if (deck && window.innerWidth <= 1140) {
+    deck.style.transform = "none";
+  }
+});
+
+// Toggle hamburger menu
+window.addEventListener("load", function () {
+  const menuToggle = document.getElementById("menu-toggle");
+  const navbarMenu = document.getElementById("navbar-menu");
+  const menuClose = document.getElementById("menu-close");
+  const menuOverlay = document.getElementById("menu-overlay");
+
+  function toggleMenu(show) {
+    if (show) {
+      navbarMenu.classList.add("show");
+      menuOverlay.classList.add("show");
+      menuClose.classList.add("show");
+    } else {
+      navbarMenu.classList.remove("show");
+      menuOverlay.classList.remove("show");
+      menuClose.classList.remove("show");
+    }
+  }
+
+  // Mở menu
+  menuToggle.addEventListener("click", () => toggleMenu(true));
+
+  // Đóng menu
+  menuClose?.addEventListener("click", () => toggleMenu(false));
+  menuOverlay?.addEventListener("click", () => toggleMenu(false));
+
+  // Đóng khi click vào 1 link trong menu
+  document.querySelectorAll("#navbar-menu a").forEach((link) => {
+    link.addEventListener("click", () => toggleMenu(false));
+  });
 });
 
 // khi window có hành động scroll thì dùng hàm checkInfoBoxVisible
@@ -199,3 +250,4 @@ window.addEventListener("load", checkAllBoxesVisible);
 
 Array(400).fill().forEach(addStar); //gọi hàm add star 400 lần
 animate(); // bắt đầu gọi hàm
+

@@ -1,0 +1,191 @@
+/* Tablet & mobile*/
+@media (max-width: 991.98px) {
+  /* menu trwn tablet và mobile */
+  .menu-toggle {
+    display: flex;
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 1001;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  /* dấu 3 gạch */
+  .menu-toggle span {
+    height: 3px;
+    background-color: #00f0ff;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  /* màng đen lớp dứơi mặc dịnh ẩn */
+  .menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+  /* hiện ra lớp ẩn ở dưới */
+  .menu-overlay.show {
+    display: block;
+    background: rgba(0, 0, 0, 0.6);
+  }
+
+  /* khu vực lựa chọn mặc định ẩn */
+  .navbar ul {
+    width: 70%;
+    padding-left: 1.5rem;
+    padding-top: 5rem;
+    gap: 1.5rem;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    background: rgba(10, 10, 25, 0.95);
+    display: none;
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(100%);
+  }
+
+  /* hiện khu vực chọn */
+  .navbar ul.show {
+    display: flex;
+    transform: translateX(0);
+  }
+
+  /* dấu x tắt menu mặc định ẩn */
+  .menu-close {
+    top: 1.5rem;
+    left: 32%;
+    font-size: 2.4rem;
+    display: none;
+    position: fixed;
+    color: #00f0ff;
+    cursor: pointer;
+    z-index: 1002;
+    font-weight: bold;
+  }
+
+  /* hiện dấu x lên */
+  .menu-close.show {
+    display: block;
+  }
+
+  /* các lựa chọn */
+  .navbar a {
+    margin: 2rem;
+    font-size: 1.5rem;
+    white-space: nowrap;
+  }
+
+  /* nút tải xuống */
+  .cv-download {
+    padding: 0.8rem 1.2rem;
+    font-size: 1.3rem;
+  }
+
+  /* định dạng lại banner */
+  .banner {
+    display: block;
+  }
+
+  .banner .banner-left {
+    margin-bottom: 20rem;
+  }
+
+  .info-box,
+  .lovely-box,
+  .work-box {
+    width: 100%;
+    text-align: center;
+  }
+
+  .lovely-box {
+    margin-top: 15rem;
+  }
+
+  .lovely__items {
+    justify-content: center;
+  }
+
+  .work-box {
+    max-width: 50rem;
+    margin-top: 0;
+    margin-left: 9.3rem;
+  }
+  .skill-section,
+  .skill-container,
+  .skill-container .skill-control {
+    transform: none !important;
+    transform-style: flat !important;
+    perspective: none !important;
+  }
+
+  .skill-control {
+    display: block;
+  }
+
+  .skill {
+    width: 100%;
+    transform: none !important;
+    transform-style: flat !important;
+    perspective: none !important;
+    margin-bottom: 3rem;
+  }
+
+  .award-section {
+    margin-top: 8rem;
+  }
+
+  .award-container {
+    margin: 2rem;
+  }
+  .wind-trail {
+    left: 50%;
+  }
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 991.98px) {
+}
+
+/* mobile */
+@media (max-width: 767.98px) {
+  html {
+    font-size: 50%;
+  }
+
+  .banner-left h1 {
+    margin-left: 3rem;
+  }
+
+  .banner-right img {
+    margin-left: 3rem;
+  }
+
+  .info-box {
+    margin-left: -2rem;
+  }
+
+  .lovely-box {
+    right: 0%;
+  }
+
+  .work-box {
+    margin-left: -1.7rem;
+  }
+
+  .award-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+}
