@@ -11,46 +11,43 @@
     position: absolute;
     z-index: 1;
     opacity: 0.9;
-    border-radius: 1rem;
-    box-shadow: 0 0 1rem #00ffff66, 0 0 2rem #00ffff33;
-    animation: fadeIn 1s ease-in-out;
   }
 
   .profile-section .profile-extra-image {
-    top: 12%;
-    right: 5%;
-    width: 30rem;
-    height: 40rem;
+    top: 47%;
+    right: 0%;
+    width: 50rem;
   }
 
   .lovely-section .profile-extra-image {
-    top: 60%;
+    top: 70%;
     right: 70%;
-    width: 30rem;
+    width: 40rem;
     height: 26.7rem;
   }
 
   .work-section .profile-extra-image {
     top: 70%;
-    left: 70%;
-    width: 20rem;
+    left: 60%;
+    width: 60rem;
+  }
+
+  .contact-container .profile-extra-image.left {
+    top: 30%;
+    left: 0%;
+    width: 30rem;
+  }
+
+  .contact-container .profile-extra-image.right {
+    top: 40%;
+    right: 0%;
+    width: 30rem;
   }
 
   .profile-extra-image img {
     width: 100%;
     border-radius: inherit;
     object-fit: cover;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateX(3rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
   }
 }
 
